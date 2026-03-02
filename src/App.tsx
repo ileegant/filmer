@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { fetchMovies } from "./api/tmdb";
 import type { Movie } from "./types";
+import { Bookmark, ThumbsDown, ThumbsUp } from "lucide-react";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -37,15 +38,18 @@ function App() {
 
             <div className="flex flex-col items-center gap-4">
               <div className="flex w-full gap-4">
-                <button className="flex-1 bg-neutral-50 text-neutral-900 text-lg font-bold rounded-md cursor-pointer p-2">
+                <button className="group flex flex-1 items-center justify-center gap-2 bg-neutral-800 hover:bg-green-600/20 text-neutral-50 border border-neutral-700 hover:border-green-500/50 text-lg font-bold rounded-md cursor-pointer py-3">
+                  <ThumbsUp className="group-hover:text-green-400 group-hover:fill-green-400 transition-colors" />
                   LIKE
                 </button>
-                <button className="flex-1 bg-neutral-50 text-neutral-900 text-lg font-bold rounded-md cursor-pointer p-2">
+                <button className="group flex flex-1 items-center justify-center gap-2 bg-neutral-800 hover:bg-red-600/20 text-neutral-50 border border-neutral-700 hover:border-red-500/50 text-lg font-bold rounded-md cursor-pointer py-3">
+                  <ThumbsDown className="group-hover:text-red-400 group-hover:fill-red-400 transition-colors" />
                   DISLIKE
                 </button>
               </div>
-              <button className="w-full text-neutral-50 border-2 border-neutral-50 text-lg font-bold rounded-md cursor-pointer p-2">
-                WATCH LATER
+              <button className="group flex items-center justify-center gap-2 w-full bg-neutral-50 hover:bg-amber-400 text-neutral-900 text-lg font-black rounded-md cursor-pointer py-3 transition-all">
+                <Bookmark className="group-hover:fill-neutral-900" />
+                ADD TO WATCH LIST
               </button>
             </div>
           </div>
